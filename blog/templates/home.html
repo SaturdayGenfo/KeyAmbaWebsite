@@ -1,0 +1,65 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+    <head>
+        <title>
+            ቀይ አምባ
+        </title>
+        <link rel="stylesheet" href="{% static 'style/style.css' %}" />
+    </head>
+    <body>
+        <div class="header">
+            <a href="{% url 'contribute' %}"><span class="add-button">ያክሉበት</span></a><br/>
+            <a class="headlink" href="{% url 'home' %}">ተረት እና ምሳሌ</a>
+            
+        </div>
+        <div class="center">
+            <div class="left">
+                {% if prev > 0 %}
+                <a href="{% url 'show' prev %}"><</a>
+                {% else %}
+                <
+                {% endif %}
+            </div>
+            <div class="right">
+                {% if next > 0 %}
+                <a href="{% url 'show' next %}">></a>
+                {% else %}
+                >
+                {% endif %}
+            </div>
+            <div class="saying">
+                {{ post }}
+            </div>
+            <div class="description">
+                {{ description }}
+            </div>
+            
+
+        </div>
+        
+        <div class="comments">
+
+        <span class="comments-title">COMMENTS</span>
+
+        <br/>
+
+        {% for c in comments %}
+        <div class="comment-single">
+            <span class="comment-name">{{ c.poster }}</span>
+            <div class="comment-box">
+                {{ c.text }}
+            </div>
+        </div>
+        <br/>
+        {% endfor %}
+        <div class="form">
+        <form action="{% url 'show' id %}" method="post">{%csrf_token %}
+            {{ form.as_p }}
+            <input class="submit-button" type="submit" value="Submit" />
+        </form>
+        </div>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+    <head>
+        <title>
+            ቀይ አምባ
+        </title>
+        <link rel="stylesheet" href="{% static 'style/style.css' %}" />
+    </head>
+    <body>
+        <div class="header">
+            <a class="headlink" href="{% url 'home' %}">ተረት እና ምሳሌ</a>
+        </div>
+        {% if eval %}
+        <div class="intro-text">
+            <span class="contribute">በእነዚ ተረት እና ምሳሌዎች ላይ የምታቅዋችው ካሉ እንድትጨምሩ እናበረታታለን</span><br/>
+            <span class="contribute-en">Help us enrich our database and send us the proverbs you know.</span>
+        </div>
+        <div class="input-form">
+            <form action="{% url 'contribute' %}" method="post">{%csrf_token %}
+            {{ form.as_p }}
+            <input class="submit-button" type="submit" value="Submit" />
+        </div>
+        {% else %}
+        <div class="intro-text">
+            THANK YOU !<br/>
+            Your contribution is greatly appreciated :)<br/>
+            <a href="{% url 'home' %}">Click here</a> to go back.
+        </div>
+        {% endif %}
+    </body>
+</html>
+
+    
