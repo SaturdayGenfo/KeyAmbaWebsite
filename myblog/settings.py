@@ -25,7 +25,7 @@ SECRET_KEY = 'sw&4v)=io(mi1*af^w6r(^vr+y!q650lfn$y@(^$4pgmi_(zee'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'saturdaygenfo.pythonanywhere.com']
 
 
 # Application definition
